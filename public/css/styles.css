@@ -1,0 +1,96 @@
+body{
+
+  margin: 0;
+  background-color: #faf5ef;
+  text-align: center;
+  color: #51eaea;
+}
+h1{
+  text-align: center;
+  color: #3e64ff;
+  font-size: 2rem;
+}
+p{
+  color: white;
+}
+.heading{
+
+  height: 100px;
+  width: 100%;
+  margin-bottom: 100px;
+  background-color: #ecfcff;
+}
+.card {
+
+
+  margin:50px 70px 50px 150px;
+
+  width: 80%;
+  height: 200px;
+
+
+}
+.card-body{
+  color: white;
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+}
+.card:hover{
+  box-shadow: 10px 10px 10px #525252;
+}
+.nyt{
+  background-color:  #ef4b4b;
+
+}
+
+
+.yahoo{
+  background-color:  #614ad3;
+}
+.forbes{
+  background-color: #0c005a;
+
+}
+.tech-crunch{
+  background-color: #009975;
+}
+.women{
+  background-color: #b824a4;
+}
+.economist{
+  background-color: #393e46;
+}
+.people{
+  background-color: #fa7d09;
+}
+
+.title{
+  color: white;
+}
+.title:hover{
+  color:#b2fcff;
+}
+/* .content:hover{
+  font-size: 1.5rem;
+} */
+#people{
+  margin-bottom:150px;
+}
+footer{
+  background-color: #ecfcff;
+  color:#3e64ff;
+  height: 100px;
+
+  margin-top: 10px;
+  text-align: center;
+  position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+
+}
+h3{
+  padding: 30px;
+}
