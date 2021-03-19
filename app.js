@@ -5,10 +5,11 @@ const ejs = require('ejs');
 const request = require('request');
 const cheerio = require("cheerio");
 var theNewYorkTimes;
+var usaTodayNews;
 var yahooNews;
 var techCrunchNews;
 var forbesNews;
-var womensDayNews;
+var cosmopolitan;
 var theEconomistNews;
 var peopleNews;
 var indiatodayNews;
@@ -31,6 +32,22 @@ request("https://www.nytimes.com/",(error,response,html)=>
     console.log(heading)
     if(i==0){
       theNewYorkTimes  = heading+".";
+    }
+    });
+  }
+});
+//USA Today
+request("https://www.usatoday.com/",(error,response,html)=>
+{
+  if (!error && response.statusCode==200){
+    const $ = cheerio.load(html);
+
+    const cnn_heading = $("span").each((i,el) => {
+
+    const heading = $(el).text();
+    console.log(heading)
+    if(i==0){
+      usaTodayNews = heading+".";
     }
     });
   }
@@ -78,13 +95,13 @@ request("https://www.economist.com/",(error,response,html)=>
 });
 
 //womansday
-request("https://www.womansday.com/",(error,response,html)=>
+request("https://www.cosmopolitan.com/",(error,response,html)=>
 {
   if (!error && response.statusCode==200){
     const $ = cheerio.load(html);
-    const w_heading = $(".css-s92f4a-CustomItemTitle,e16jzhbj3").each(function(i,e){
+    const w_heading = $(".custom-item-title,item-title").each(function(i,e){
       if(i ==0){     const heading = $(e).text().trim();
-      womensDayNews = heading + '.';}
+      cosmopolitan = heading + '.';}
     });
 
 
@@ -237,7 +254,7 @@ app.use(express.static("public"));
 app.get("/",function(req,res){
    res.render("home",{theNewYorkTimes :theNewYorkTimes,
      yahooNews:yahooNews,forbesNews:forbesNews, techCrunchNews:techCrunchNews,
-   womensDayNews:womensDayNews,theEconomistNews:theEconomistNews,peopleNews:peopleNews
+   cosmopolitan:cosmopolitan,theEconomistNews:theEconomistNews,peopleNews:peopleNews,usaTodayNews:usaTodayNews
 });
 
 
