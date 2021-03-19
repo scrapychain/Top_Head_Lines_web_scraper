@@ -133,116 +133,53 @@ request("https://www.forbes.com/",(error,response,html)=>
 
 
 //indiatoday
-request("https://www.indiatoday.in/",function(error, response,html){
-
-  if (!error && response.statusCode==200){
-
-    const $ = cheerio.load(html);
-    const heading = $("h2").text().trim()+".";
-    indiatodayNews = heading;
-  }
+today_url = "https://www.indiatoday.in/"
+today_target ="h2"
+indiatodayNews = display_news(today_url,today_target)
 
 
-});
+
 //timesofindia
 times_url = "https://timesofindia.indiatimes.com/us";
 times_target = "figcaption";
-request(times_url,function (error,response, html){
-  if (!error && response.statusCode==200){
-    const $ = cheerio.load(html);
-    const h = $(times_target).each(function (i,el){
-      if(i==0){
-        const heading= $(el).text().trim()+ ".";
-
-        timesofindiaNews = heading;
-      }
-    })
-
-  }
-})
+timesofindiaNews = display_news(times_url,times_target)
 //businesstoday
 business_url = "https://www.businesstoday.in/";
 business_target = ".topzone";
-request(business_url,function (error,response, html){
-  if (!error && response.statusCode==200){
-    const $ = cheerio.load(html);
-    const h = $(business_target).each(function (i,el){
-      if(i==0){
-        const heading= $(el).text().trim()+ ".";
-
-        businesstodayNews = heading ;
-      }
-    })
-
-  }
-})
+businesstodayNews = display_news(business_url,business_target)
 //indianexpress
 express_url = "https://indianexpress.com/";
 express_target = ".ie-first-story";
-request(express_url,function (error,response, html){
-  if (!error && response.statusCode==200){
-    const $ = cheerio.load(html);
-    const h = $(express_target).each(function (i,el){
-      if(i==0){
-        const heading= $(el).text().trim()+ ".";
-
-        indianexpressNews = heading;
-      }
-    })
-
-  }
-})
+indianexpressNews = display_news(express_url,express_target)
 //
 
 //thehindu
 hindu_url = "https://www.thehindu.com/";
 hindu_target = ".ls50x3Bluebg-heading";
-request(hindu_url,function (error,response, html){
-  if (!error && response.statusCode==200){
-    const $ = cheerio.load(html);
-    const h = $(hindu_target).each(function (i,el){
-      if(i==0){
-        const heading= $(el).text().trim()+ ".";
-
-        thehinduNews = heading ;
-      }
-    })
-
-  }
-})
+thehinduNews = display_news(hindu_url,hindu_target)
 //ndtv
 ndtv_url = "https://www.ndtv.com/";
 ndtv_target = "h1";
-request(ndtv_url,function (error,response, html){
-  if (!error && response.statusCode==200){
-    const $ = cheerio.load(html);
-    const h = $(ndtv_target).each(function (i,el){
-      if(i==0){
-        const heading= $(el).text().trim()+ ".";
-
-        ndtvNews = heading ;
-      }
-    })
-
-  }
-})
+ndtvNews = display_news(ndtv_url,ndtv_target)
 //zeeNews
 zee_url = "https://zeenews.india.com/"
 zee_target = "h1";
-request(zee_url,function (error,response, html){
-  if (!error && response.statusCode==200){
-    const $ = cheerio.load(html);
-    const h = $(zee_target).each(function (i,el){
-      if(i==0){
-        const heading= $(el).text().trim()+ ".";
+zeeNews = display_news(zee_url,zee_target)
+function display_news(url,target){
+  request(url,function (error,response, html){
+    if (!error && response.statusCode==200){
+      const $ = cheerio.load(html);
+      const h = $(target).each(function (i,el){
+        if(i==0){
+          const heading= $(el).text().trim()+ ".";
 
-        zeeNews = heading;
-      }
-    })
+          zeeNews = heading;
+        }
+      })
 
-  }
-})
-
+    }
+  })
+}
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
