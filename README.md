@@ -1,3 +1,19 @@
-# top-headlines-web-scraper
+# Top Headlines Web Scraper
 
-This website basically shows headlines of a few popular news agencies and magazines. It will update the headlines as soon as the original news websites update their headlines automatically.
+This application scrapes the home pages of the top 100 US news websites and displays their latest headline on the home page.
+
+## Setup
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run the application:
+
+```
+node app.js
+```
+
+The home page will list each site with the headline that was found. If a site cannot be reached or no headline is found, a message will be shown instead.
