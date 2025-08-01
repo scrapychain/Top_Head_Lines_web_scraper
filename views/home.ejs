@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <title>Top US News Headlines</title>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
   <h1>Top US News Headlines</h1>
-  <ul>
-    <% headlines.forEach(function(item){ %>
-      <li><a href="<%= item.url %>"><%= item.site %></a>: <%= item.headline %></li>
+  <div class="card-container">
+    <% headlines.forEach(function(item, index){ %>
+      <div class="card" style="animation-delay:<%= index * 0.1 %>s">
+        <div class="card-body">
+          <a class="card-title" href="<%= item.url %>" target="_blank" rel="noopener noreferrer"><%= item.site %></a>
+          <p class="card-text"><%= item.headline %></p>
+        </div>
+      </div>
     <% }); %>
-  </ul>
+  </div>
 </body>
 </html>
