@@ -10,6 +10,10 @@ Install dependencies:
 npm install
 ```
 
+The scraper sends requests with a browser-like `User-Agent` header and checks
+common meta tags (`og:title` and `twitter:title`) in addition to `<h1>` and
+`<title>` elements to increase the odds of retrieving a meaningful headline.
+
 Run the application:
 
 ```
